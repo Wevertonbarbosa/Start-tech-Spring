@@ -1,6 +1,14 @@
 package com.nintendo.pokedex;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Pokemon {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//Traz o incremento para o Id
     private int id;
     private String nome;
     private String especie;
@@ -46,5 +54,13 @@ public class Pokemon {
 
     public void setNivel(String nivel) {
         this.nivel = nivel;
+    }
+
+
+    public void atualizar(Pokemon pokemon) {
+        this.nome = pokemon.getNome();
+        this.especie = pokemon.getEspecie();
+        this.tipo = pokemon.getTipo();
+        this.nivel = pokemon.getNivel();
     }
 }
